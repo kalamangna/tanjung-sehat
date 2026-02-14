@@ -1,58 +1,58 @@
 # Klinik & Apotik Tanjung Sehat - Website Template
 
-A scalable clinic website template built with CodeIgniter 4 and Tailwind CSS.
+Sistem platform website klinik dan apotek yang skalabel, dibangun dengan CodeIgniter 4 dan Tailwind CSS.
 
-## Features
-- Clean MVC Architecture
-- Admin Dashboard with CRUDs
-- Multi-clinic Ready (Easy rebranding)
-- WhatsApp Floating Button
-- SEO Optimized (Sitemap, Robots.txt, Schema.org)
-- Mobile-first Responsive Design
+## Fitur Utama
+- **Arsitektur MVC Bersih**: Pemisahan logika frontend dan admin yang terstruktur.
+- **RBAC (Role-Based Access Control)**: Sistem hak akses berbasis izin (Permission-based) dengan 3 role bawaan: Superadmin, Admin, dan Blog Editor.
+- **Lokalisasi Penuh**: Menggunakan istilah medis dan navigasi Bahasa Indonesia yang simpel dan profesional.
+- **Strategi Gambar Fail-Safe**: Integrasi otomatis dengan placeholder Picsum dan fallback sistem jika gambar gagal dimuat.
+- **Dashboard Admin Lengkap**: Kelola Layanan, Dokter, Galeri, Testimoni, Blog, Pengguna, dan Pengaturan Situs.
+- **Optimasi SEO**: Sitemap.xml otomatis, Robots.txt, dan skema JSON-LD MedicalOrganization.
+- **Logging Aktivitas**: Mencatat setiap aksi administratif untuk audit keamanan.
 
-## Tech Stack
+## Teknologi
 - **Framework:** CodeIgniter 4.7.0
-- **CSS:** Tailwind CSS 3 (Compiled)
-- **Database:** SQLite (can be easily changed to MySQL)
+- **CSS:** Tailwind CSS v3 (Compiled)
+- **Database:** MySQL
 - **Icons:** Font Awesome 6
+- **Images:** Lorem Picsum (Placeholder)
 
-## Setup Instructions
+## Instruksi Instalasi
 
-1. **Clone the project**
+1. **Instalasi Dependensi**
    ```bash
    composer install
    npm install
    ```
 
-2. **Configure Environment**
-   - Copy `env` to `.env` (already done in this template)
-   - Ensure `writable` directory is writable.
+2. **Konfigurasi Environment**
+   - Salin `env` ke `.env`.
+   - Sesuaikan kredensial database MySQL Anda di `.env`.
+   - Pastikan direktori `writable` memiliki izin tulis.
 
-3. **Database Migration & Seeding**
+3. **Inisialisasi Database**
    ```bash
    php spark migrate
    php spark db:seed SampleSeeder
    ```
 
-4. **Compile Assets**
+4. **Kompilasi Aset**
    ```bash
    npm run build:css
    ```
 
-5. **Run the Application**
+5. **Jalankan Server**
    ```bash
    php spark serve
    ```
-   Access at `http://localhost:8080`
+   Akses melalui `http://localhost:8080`
 
-6. **Admin Access**
+6. **Akses Admin**
    - URL: `http://localhost:8080/admin`
-   - Username: `admin`
-   - Password: `admin123`
+   - Akun Default: `admin` / `admin123`
 
-## Production Optimization
-- Change `CI_ENVIRONMENT` to `production` in `.env`.
-- Set a strong `encryption.key` in `.env`.
-- Configure `app.baseURL` with your production domain.
-- Use a production-grade database like MySQL for high traffic.
-- Minify CSS/JS (already handled by `npm run build:css`).
+## Struktur Izin RBAC
+- **Superadmin**: Akses penuh ke seluruh sistem (termasuk Pengguna & Pengaturan).
+- **Admin**: Mengelola Layanan, Dokter, Galeri, dan Testimoni.
+- **Blog Editor**: Hanya mengelola Blog dan Kategori Artikel.

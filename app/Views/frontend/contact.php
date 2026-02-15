@@ -25,11 +25,11 @@
                         </div>
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 bg-white text-primary-600 rounded-full flex items-center justify-center shrink-0 shadow-sm">
-                                <i class="fas fa-phone"></i>
+                                <i class="fab fa-whatsapp"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-gray-900">Telepon</div>
-                                <p class="text-gray-600"><?= $settings['contact_phone'] ?? '' ?></p>
+                                <div class="font-bold text-gray-900">WhatsApp</div>
+                                <p class="text-gray-600"><?= $settings['whatsapp_number'] ?? '' ?></p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -92,7 +92,7 @@
 
 <!-- Google Maps Embed -->
 <section class="h-[500px] w-full bg-gray-200 grayscale hover:grayscale-0 transition-all duration-700">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127158.21404092414!2d119.34969446864455!3d-5.14300302525547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2db9f58356391497%3A0xf6f6918664b38d7c!2sMakassar%2C%20Makassar%20City%2C%20South%20Sulawesi!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.462998222913!2d119.3847239793457!3d-5.1896622000000034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf1d0d932cb2a5%3A0x298145d049ef0e85!2sKlinik%20%26%20Apotik%20Tanjung%20Sehat!5e0!3m2!1sen!2sid!4v1771158093622!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
 <?= $this->endSection() ?>

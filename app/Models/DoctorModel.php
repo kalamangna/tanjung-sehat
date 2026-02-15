@@ -10,6 +10,6 @@ class DoctorModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['name', 'slug', 'specialty', 'biography', 'image', 'schedule', 'is_active'];
+    protected $allowedFields    = ['name', 'slug', 'specialty', 'service_days', 'image', 'is_active'];
     protected $useTimestamps    = true;
 }

@@ -3,11 +3,34 @@
 <?= $this->section('content') ?>
 
 <article class="py-20 bg-white">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "<?= $blog['title'] ?>",
+      "image": [
+        "<?= $image_src ?? base_url('images/og-image.jpg') ?>"
+       ],
+      "datePublished": "<?= date('c', strtotime($blog['created_at'])) ?>",
+      "dateModified": "<?= date('c', strtotime($blog['updated_at'] ?? $blog['created_at'])) ?>",
+      "author": {
+        "@type": "Organization",
+        "name": "Klinik Tanjung Sehat"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Klinik Tanjung Sehat",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "<?= base_url('images/logo.png') ?>"
+        }
+      },
+      "description": "<?= mb_substr(strip_tags($blog['content']), 0, 160) ?>"
+    }
+    </script>
+
     <div class="container mx-auto px-4 max-w-4xl">
         <header class="text-center mb-12">
-            <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full font-bold text-sm uppercase tracking-wider mb-6">
-                <?= $blog['category_name'] ?>
-            </span>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6"><?= $blog['title'] ?></h1>
             <div class="flex items-center justify-center text-gray-500 gap-6">
                 <span class="flex items-center gap-2"><i class="far fa-calendar"></i> <?= date('d M Y', strtotime($blog['created_at'])) ?></span>
@@ -24,8 +47,8 @@
             <img src="<?= $image_src ?>" alt="<?= $blog['title'] ?>" class="w-full aspect-video object-cover rounded-[2.5rem] mb-12 shadow-2xl">
         <?php endif; ?>
 
-        <div class="prose prose-lg prose-primary max-w-none text-gray-700 leading-relaxed">
-            <?= $blog['content'] ?>
+        <div class="prose prose-lg prose-primary max-w-none text-gray-700 leading-relaxed whitespace-pre-line">
+            <?= esc($blog['content']) ?>
         </div>
 
         <div class="mt-16 pt-8 border-t border-gray-100 flex flex-wrap gap-4 items-center justify-between">

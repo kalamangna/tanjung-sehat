@@ -17,12 +17,17 @@ class Doctors extends BaseController
     public function detail($slug)
     {
         $doctorModel = new DoctorModel();
+        
         $doctor = $doctorModel->where('slug', $slug)->first();
         
         if (!$doctor) throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 
         $this->data['title'] = $doctor['name'];
+        $this->data['meta_desc'] = "Jadwal praktik dan profil " . $doctor['name'] . ", spesialis " . $doctor['specialty'] . " di Klinik Tanjung Sehat.";
+        $this->data['og_image'] = $doctor['image'] ? base_url('uploads/doctors/' . $doctor['image']) : base_url('images/og-image.jpg');
+        $this->data['og_type'] = 'profile';
         $this->data['doctor'] = $doctor;
+        
         return view('frontend/doctor_detail', $this->data);
     }
 }

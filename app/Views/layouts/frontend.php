@@ -6,6 +6,22 @@
     <title><?= $title ?? 'Home' ?> | <?= $settings['site_name'] ?? 'Klinik Tanjung Sehat' ?></title>
     <meta name="description" content="<?= $meta_desc ?? $settings['meta_description'] ?? '' ?>">
     <meta name="keywords" content="<?= $meta_keys ?? $settings['meta_keywords'] ?? '' ?>">
+    <link rel="canonical" href="<?= current_url() ?>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="<?= $og_type ?? 'website' ?>">
+    <meta property="og:url" content="<?= current_url() ?>">
+    <meta property="og:title" content="<?= $title ?? 'Home' ?> | <?= $settings['site_name'] ?? 'Klinik Tanjung Sehat' ?>">
+    <meta property="og:description" content="<?= $meta_desc ?? $settings['meta_description'] ?? '' ?>">
+    <meta property="og:image" content="<?= $og_image ?? base_url('images/og-image.jpg') ?>">
+    <meta property="og:site_name" content="<?= $settings['site_name'] ?? 'Klinik Tanjung Sehat' ?>">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= current_url() ?>">
+    <meta property="twitter:title" content="<?= $title ?? 'Home' ?> | <?= $settings['site_name'] ?? 'Klinik Tanjung Sehat' ?>">
+    <meta property="twitter:description" content="<?= $meta_desc ?? $settings['meta_description'] ?? '' ?>">
+    <meta property="twitter:image" content="<?= $og_image ?? base_url('images/og-image.jpg') ?>">
     
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
@@ -20,7 +36,7 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 
-    <!-- Schema.org -->
+    <?php $wa_link = (isset($settings['whatsapp_number']) && strpos($settings['whatsapp_number'], '0') === 0) ? '62' . substr($settings['whatsapp_number'], 1) : ($settings['whatsapp_number'] ?? ''); ?>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -30,7 +46,7 @@
       "logo": "<?= base_url('images/logo.png') ?>",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "<?= $settings['contact_phone'] ?? '' ?>",
+        "telephone": "+<?= $wa_link ?>",
         "contactType": "customer service"
       },
       "address": {
@@ -54,7 +70,7 @@
     <?= $this->include('components/footer') ?>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/<?= $settings['whatsapp_number'] ?? '' ?>" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors z-50" target="_blank">
+    <a href="https://wa.me/<?= $wa_link ?>" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors z-50" target="_blank">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 

@@ -1,22 +1,23 @@
-# Klinik & Apotik Tanjung Sehat - Website Template
+# Klinik & Apotek Tanjung Sehat - Website Template
 
-Sistem platform website klinik dan apotek yang skalabel, dibangun dengan CodeIgniter 4 dan Tailwind CSS.
+Sistem platform website klinik dan apotek yang modern dan efisien, dibangun dengan CodeIgniter 4.7.0 dan Tailwind CSS 3.4.
 
 ## Fitur Utama
-- **Arsitektur MVC Bersih**: Pemisahan logika frontend dan admin yang terstruktur.
-- **RBAC (Role-Based Access Control)**: Sistem hak akses berbasis izin (Permission-based) dengan 3 role bawaan: Superadmin, Admin, dan Blog Editor.
-- **Lokalisasi Penuh**: Menggunakan istilah medis dan navigasi Bahasa Indonesia yang simpel dan profesional.
-- **Strategi Gambar Fail-Safe**: Integrasi otomatis dengan placeholder Picsum dan fallback sistem jika gambar gagal dimuat.
-- **Dashboard Admin Lengkap**: Kelola Layanan, Dokter, Galeri, Testimoni, Blog, Pengguna, dan Pengaturan Situs.
-- **Optimasi SEO**: Sitemap.xml otomatis, Robots.txt, dan skema JSON-LD MedicalOrganization.
-- **Logging Aktivitas**: Mencatat setiap aksi administratif untuk audit keamanan.
+- **Arsitektur MVC Bersih**: Pemisahan logika frontend dan admin yang terstruktur dan mudah dimaintain.
+- **Manajemen Dokter Terpadu**: Jadwal praktik harian mendetail dengan format waktu WITA dan integrasi WhatsApp.
+- **Layanan Sederhana**: Pengelolaan daftar layanan kesehatan yang fokus pada ringkasan informasi yang esensial.
+- **Blog & Edukasi**: Sistem penulisan artikel yang simpel dengan optimasi konten otomatis untuk SEO.
+- **SEO & Social Metadata**: Optimasi penuh dengan Sitemap.xml otomatis, Robots.txt, skema JSON-LD (Organization & Article), Open Graph, dan Twitter Cards.
+- **Lokalisasi Bahasa Indonesia**: Seluruh antarmuka admin dan pesan sistem menggunakan Bahasa Indonesia yang profesional.
+- **RBAC (Role-Based Access Control)**: Sistem izin akses yang fleksibel untuk Superadmin, Admin, dan Editor.
+- **Performa & Aksesibilitas**: Implementasi lazy loading pada gambar dan struktur HTML5 semantik.
 
 ## Teknologi
-- **Framework:** CodeIgniter 4.7.0
-- **CSS:** Tailwind CSS v3 (Compiled)
-- **Database:** MySQL
-- **Icons:** Font Awesome 6
-- **Images:** Lorem Picsum (Placeholder)
+- **Backend:** CodeIgniter 4.7.0 (PHP 8.1+)
+- **Frontend CSS:** Tailwind CSS v3.4 (Minified)
+- **Database:** MySQL / MariaDB
+- **Icons:** Font Awesome 6 (Free)
+- **Images:** Lorem Picsum & Unsplash (Placeholder)
 
 ## Instruksi Instalasi
 
@@ -39,7 +40,7 @@ Sistem platform website klinik dan apotek yang skalabel, dibangun dengan CodeIgn
 
 4. **Kompilasi Aset**
    ```bash
-   npm run build:css
+   npm run build
    ```
 
 5. **Jalankan Server**
@@ -55,4 +56,4 @@ Sistem platform website klinik dan apotek yang skalabel, dibangun dengan CodeIgn
 ## Struktur Izin RBAC
 - **Superadmin**: Akses penuh ke seluruh sistem (termasuk Pengguna & Pengaturan).
 - **Admin**: Mengelola Layanan, Dokter, Galeri, dan Testimoni.
-- **Blog Editor**: Hanya mengelola Blog dan Kategori Artikel.
+- **Blog Editor**: Mengelola konten artikel Blog.

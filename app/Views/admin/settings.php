@@ -5,7 +5,7 @@
 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
     <form action="<?= base_url('admin/settings/update') ?>" method="POST">
         <?= csrf_field() ?>
-        
+
         <h4 class="text-lg font-bold mb-6 text-primary-600 border-b pb-2">Informasi Umum</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div class="col-span-1">
@@ -25,11 +25,7 @@
                 <input type="email" name="settings[contact_email]" value="<?= $settings['contact_email'] ?? '' ?>" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500">
             </div>
             <div class="col-span-1">
-                <label class="block text-gray-700 font-bold mb-2">Nomor Telepon</label>
-                <input type="text" name="settings[contact_phone]" value="<?= $settings['contact_phone'] ?? '' ?>" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500">
-            </div>
-            <div class="col-span-1">
-                <label class="block text-gray-700 font-bold mb-2">Nomor WhatsApp (dengan 62)</label>
+                <label class="block text-gray-700 font-bold mb-2">Nomor WhatsApp</label>
                 <input type="text" name="settings[whatsapp_number]" value="<?= $settings['whatsapp_number'] ?? '' ?>" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500">
             </div>
             <div class="col-span-1">

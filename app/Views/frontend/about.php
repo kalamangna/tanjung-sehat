@@ -5,7 +5,7 @@
 <section class="py-20 bg-primary-600 text-white">
     <div class="container mx-auto px-4 text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Tentang Kami</h1>
-        <p class="text-lg text-primary-100 max-w-2xl mx-auto">Mengenal lebih dekat Klinik & Apotik Tanjung Sehat, sahabat kesehatan keluarga Anda.</p>
+        <p class="text-lg text-primary-100 max-w-2xl mx-auto">Mengenal lebih dekat Klinik & Apotek Tanjung Sehat, sahabat kesehatan keluarga Anda.</p>
     </div>
 </section>
 

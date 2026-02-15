@@ -9,8 +9,8 @@
 <body class="bg-gray-100 h-screen flex items-center justify-center">
     <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
         <div class="text-center mb-8">
-            <h1 class="text-2xl font-bold text-gray-900">Admin Login</h1>
-            <p class="text-gray-500">Tanjung Sehat Dashboard</p>
+            <h1 class="text-2xl font-bold text-gray-900">Login Admin</h1>
+            <p class="text-gray-500">Panel Admin Tanjung Sehat</p>
         </div>
 
         <?php if (session()->getFlashdata('error')): ?>
@@ -30,7 +30,7 @@
                 <input type="password" name="password" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all" required>
             </div>
             <button type="submit" class="w-full bg-primary-600 text-white font-bold py-3 rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-200">
-                Sign In
+                Masuk
             </button>
         </form>
     </div>

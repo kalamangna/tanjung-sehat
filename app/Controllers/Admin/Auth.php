@@ -44,7 +44,7 @@ class Auth extends BaseController
                 'isLoggedIn'  => true,
             ]);
 
-            log_activity('Login', 'Auth', 'User logged in successfully');
+            log_activity('Login', 'Auth', 'Pengguna berhasil masuk');
 
             return redirect()->to('admin');
         }

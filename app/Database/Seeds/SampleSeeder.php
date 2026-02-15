@@ -32,10 +32,10 @@ class SampleSeeder extends Seeder
 
         model('UserModel')->insert(['username' => 'admin', 'email' => 'admin@tanjungsehat.com', 'password' => password_hash('admin123', PASSWORD_DEFAULT), 'name' => 'Admin Utama', 'role_id' => 1]);
         $settings = [
-            ['key' => 'site_name', 'value' => 'Klinik & Apotik Tanjung Sehat'],
+            ['key' => 'site_name', 'value' => 'Klinik & Apotek Tanjung Sehat'],
             ['key' => 'site_tagline', 'value' => 'Sehat Lebih Dekat, Lebih Cepat.'],
-            ['key' => 'whatsapp_number', 'value' => '628123456789'],
-            ['key' => 'contact_phone', 'value' => '0411-1234567'],
+            ['key' => 'whatsapp_number', 'value' => '08123456789'],
+            ['key' => 'google_maps_url', 'value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127158.21404092414!2d119.34969446864455!3d-5.14300302525547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2db9f58356391497%3A0xf6f6918664b38d7c!2sMakassar%2C%20Makassar%20City%2C%20South%20Sulawesi!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid'],
             ['key' => 'contact_address', 'value' => 'Jl. Tanjung Alang No. 12, Makassar'],
             ['key' => 'contact_email', 'value' => 'info@tanjungsehat.com'],
         ];
@@ -45,7 +45,7 @@ class SampleSeeder extends Seeder
         $this->db->table('services')->truncate();
         $srvData = [
             ['title' => 'Poli Umum', 'icon' => 'user-md'],
-            ['title' => 'Apotik', 'icon' => 'pills'],
+            ['title' => 'Apotek', 'icon' => 'pills'],
             ['title' => 'Lab Medik', 'icon' => 'microscope'],
             ['title' => 'Poli Gigi', 'icon' => 'tooth'],
             ['title' => 'Poli Anak', 'icon' => 'baby'],

@@ -45,7 +45,7 @@ class Users extends BaseController
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         
         $userModel->insert($data);
-        log_activity('Create User', 'Users', 'Created user: ' . $data['username']);
+        log_activity('Tambah Pengguna', 'Pengguna', 'Menambahkan pengguna: ' . $data['username']);
         
         return redirect()->to('admin/users')->with('success', 'Pengguna berhasil ditambahkan.');
     }
@@ -58,7 +58,7 @@ class Users extends BaseController
 
         $userModel = new UserModel();
         $userModel->delete($id);
-        log_activity('Delete User', 'Users', 'Deleted user ID: ' . $id);
+        log_activity('Hapus Pengguna', 'Pengguna', 'Menghapus pengguna ID: ' . $id);
         
         return redirect()->to('admin/users')->with('success', 'Pengguna berhasil dihapus.');
     }

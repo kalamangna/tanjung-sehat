@@ -10,14 +10,19 @@
 <body class="bg-gray-100 flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-gray-900 text-white flex-shrink-0 hidden md:flex flex-col">
-        <div class="p-6 border-b border-gray-800">
-            <h1 class="text-xl font-bold text-primary-400">Tanjung Admin</h1>
-            <p class="text-xs text-gray-500 uppercase mt-1 font-bold tracking-widest"><?= session()->get('role') ?></p>
+    <aside id="sidebar" class="w-64 bg-gray-900 text-white flex-shrink-0 hidden md:flex flex-col fixed inset-y-0 left-0 z-50 md:relative transition-all duration-300">
+        <div class="p-6 border-b border-gray-800 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-primary-400">Tanjung Sehat</h1>
+                <p class="text-xs text-gray-500 uppercase mt-1 font-bold tracking-widest"><?= session()->get('role') ?></p>
+            </div>
+            <button id="close-sidebar" class="md:hidden text-gray-500 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
         </div>
         <nav class="flex-grow p-4 space-y-2">
             <a href="<?= base_url('admin') ?>" class="block px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors <?= (uri_string() == 'admin') ? 'bg-primary-600 text-white' : '' ?>">
-                <i class="fas fa-home mr-3 w-5"></i> Dashboard
+                <i class="fas fa-home mr-3 w-5"></i> Dasbor
             </a>
             
             <?php if (has_permission('manage_services')): ?>
@@ -64,7 +69,7 @@
         </nav>
         <div class="p-4 border-t border-gray-800">
             <a href="<?= base_url('admin/logout') ?>" class="block px-4 py-2 text-red-400 hover:bg-gray-800 rounded-lg transition-colors">
-                <i class="fas fa-sign-out-alt mr-3 w-5"></i> Logout
+                <i class="fas fa-sign-out-alt mr-3 w-5"></i> Keluar
             </a>
         </div>
     </aside>
@@ -74,8 +79,8 @@
         <!-- Header -->
         <header class="bg-white shadow-sm px-8 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <button class="md:hidden mr-4 text-gray-600"><i class="fas fa-bars text-xl"></i></button>
-                <h2 class="text-xl font-semibold text-gray-800"><?= $title ?? 'Dashboard' ?></h2>
+                <button id="open-sidebar" class="md:hidden mr-4 text-gray-600"><i class="fas fa-bars text-xl"></i></button>
+                <h2 class="text-xl font-semibold text-gray-800"><?= $title ?? 'Dasbor' ?></h2>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="text-right hidden sm:block">
@@ -106,5 +111,24 @@
         </div>
     </main>
 
+    <!-- Mobile Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const openSidebar = document.getElementById('open-sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('flex');
+            overlay.classList.toggle('hidden');
+        }
+
+        openSidebar?.addEventListener('click', toggleSidebar);
+        closeSidebar?.addEventListener('click', toggleSidebar);
+        overlay?.addEventListener('click', toggleSidebar);
+    </script>
 </body>
 </html>

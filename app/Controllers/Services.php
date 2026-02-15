@@ -6,23 +6,13 @@ use App\Models\ServiceModel;
 
 class Services extends BaseController
 {
-    public function index()
-    {
-        $serviceModel = new ServiceModel();
-        $this->data['title'] = 'Layanan Kami';
-        $this->data['services'] = $serviceModel->where('is_active', 1)->findAll();
-        return view('frontend/services', $this->data);
-    }
-
-    public function detail($slug)
-    {
-        $serviceModel = new ServiceModel();
-        $service = $serviceModel->where('slug', $slug)->first();
+            public function index()
+            {
+                $serviceModel = new ServiceModel();
+                $this->data['title'] = 'Layanan Kami';
+                $this->data['meta_desc'] = 'Daftar layanan kesehatan lengkap di Klinik Tanjung Sehat: Poli Umum, Gigi, Anak, Laboratorium, dan Apotek 24 Jam.';
+                $this->data['services'] = $serviceModel->where('is_active', 1)->findAll();
+                return view('frontend/services', $this->data);
+            }
+        }
         
-        if (!$service) throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-
-        $this->data['title'] = $service['title'];
-        $this->data['service'] = $service;
-        return view('frontend/service_detail', $this->data);
-    }
-}

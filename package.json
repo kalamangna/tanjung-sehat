@@ -1,15 +1,15 @@
 {
   "name": "tanjung-sehat",
   "version": "1.0.0",
-  "description": "Klinik & Apotik Tanjung Sehat",
+  "description": "Klinik & Apotek Tanjung Sehat",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --minify",
-    "dev": "tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch"
+    "dev": "tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch",
+    "build": "tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --minify"
   },
   "keywords": [],
   "author": "",

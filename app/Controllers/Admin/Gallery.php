@@ -18,6 +18,17 @@ class Gallery extends BaseController
     public function create()
     {
         $galleryModel = new GalleryModel();
+        
+        $rules = [
+            'title'    => 'required|min_length[3]',
+            'category' => 'required|in_list[Fasilitas,Kegiatan]',
+            'image'    => 'uploaded[image]|is_image[image]|max_size[image,2048]'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
         $img = $this->request->getFile('image');
         
         if ($img && $img->isValid() && !$img->hasMoved()) {
@@ -30,7 +41,7 @@ class Gallery extends BaseController
                 'image'    => $newName
             ]);
             
-            log_activity('Upload Gallery', 'Gallery', 'Uploaded: ' . $newName);
+            log_activity('Unggah Galeri', 'Galeri', 'Mengunggah: ' . $this->request->getPost('title'));
             return redirect()->to('admin/gallery')->with('success', 'Foto berhasil diunggah.');
         }
 
@@ -45,7 +56,7 @@ class Gallery extends BaseController
             unlink(ROOTPATH . 'public/uploads/gallery/' . $item['image']);
         }
         $galleryModel->delete($id);
-        log_activity('Delete Gallery', 'Gallery', 'Deleted ID: ' . $id);
+        log_activity('Hapus Galeri', 'Galeri', 'Menghapus ID: ' . $id);
         return redirect()->to('admin/gallery')->with('success', 'Foto berhasil dihapus.');
     }
 }

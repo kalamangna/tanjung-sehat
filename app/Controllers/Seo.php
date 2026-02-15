@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ServiceModel;
 use App\Models\BlogModel;
+use App\Models\DoctorModel;
 
 class Seo extends BaseController
 {
@@ -11,10 +12,12 @@ class Seo extends BaseController
     {
         $serviceModel = new ServiceModel();
         $blogModel = new BlogModel();
+        $doctorModel = new DoctorModel();
 
         $data = [
             'services' => $serviceModel->where('is_active', 1)->findAll(),
             'blogs'    => $blogModel->where('status', 'published')->findAll(),
+            'doctors'  => $doctorModel->where('is_active', 1)->findAll(),
             'pages'    => ['', 'about', 'contact', 'services', 'doctors', 'blog', 'privacy-policy', 'disclaimer']
         ];
 

@@ -14,7 +14,6 @@
         <thead class="bg-gray-50 text-gray-600 uppercase text-xs font-bold">
             <tr>
                 <th class="px-6 py-4">Judul</th>
-                <th class="px-6 py-4">Icon</th>
                 <th class="px-6 py-4">Status</th>
                 <th class="px-6 py-4 text-right">Aksi</th>
             </tr>
@@ -23,7 +22,6 @@
             <?php foreach ($services as $service): ?>
             <tr class="hover:bg-gray-50 transition-colors">
                 <td class="px-6 py-4 font-semibold text-gray-900"><?= $service['title'] ?></td>
-                <td class="px-6 py-4 text-gray-500"><i class="fas fa-<?= $service['icon'] ?? 'plus-square' ?>"></i></td>
                 <td class="px-6 py-4">
                     <?php if ($service['is_active']): ?>
                         <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Aktif</span>

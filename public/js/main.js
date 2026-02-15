@@ -1,1 +1,11 @@
-document.getElementById('menu-btn')?.addEventListener('click', () => {\n    document.getElementById('mobile-menu').classList.toggle('hidden');\n});
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+});

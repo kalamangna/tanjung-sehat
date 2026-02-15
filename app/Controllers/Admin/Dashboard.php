@@ -11,7 +11,7 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        $this->data['title'] = 'Dashboard';
+        $this->data['title'] = 'Dasbor';
         
         $serviceModel = new ServiceModel();
         $doctorModel = new DoctorModel();

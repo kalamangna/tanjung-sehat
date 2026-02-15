@@ -3,7 +3,10 @@
 <?= $this->section('content') ?>
 
 <div class="flex justify-between items-center mb-8">
-    <h3 class="text-2xl font-bold text-gray-900">Manajemen Testimoni</h3>
+    <h3 class="text-2xl font-bold text-gray-900">Testimoni</h3>
+    <a href="<?= base_url('admin/testimonials/new') ?>" class="bg-primary-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+        <i class="fas fa-plus mr-2"></i> Tambah Testimoni
+    </a>
 </div>
 
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -22,7 +25,6 @@
             <tr class="hover:bg-gray-50 transition-colors">
                 <td class="px-6 py-4">
                     <div class="font-bold text-gray-900"><?= $testi['name'] ?></div>
-                    <div class="text-xs text-gray-500"><?= $testi['position'] ?></div>
                 </td>
                 <td class="px-6 py-4 text-gray-600 text-sm italic">
                     "<?= substr($testi['content'], 0, 100) ?><?= strlen($testi['content']) > 100 ? '...' : '' ?>"
@@ -42,7 +44,8 @@
                     </a>
                 </td>
                 <td class="px-6 py-4 text-right space-x-2">
-                    <a href="<?= base_url('admin/testimonials/delete/' . $testi['id']) ?>" class="text-red-600 hover:text-red-800" onclick="return confirm('Hapus testimoni ini?')">
+                    <a href="<?= base_url('admin/testimonials/edit/' . $testi['id']) ?>" class="text-blue-600 hover:text-blue-800" title="Edit"><i class="fas fa-edit"></i></a>
+                    <a href="<?= base_url('admin/testimonials/delete/' . $testi['id']) ?>" class="text-red-600 hover:text-red-800" onclick="return confirm('Hapus testimoni ini?')" title="Hapus">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>

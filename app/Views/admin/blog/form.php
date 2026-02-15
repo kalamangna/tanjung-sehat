@@ -2,67 +2,68 @@
 
 <?= $this->section('content') ?>
 
-<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-    <form action="<?= isset($blog) ? base_url('admin/blog/update/' . $blog['id']) : base_url('admin/blog/create') ?>" method="POST" enctype="multipart/form-data">
-        <?= csrf_field() ?>
-        
-        <div class="mb-6">
-            <label class="block text-gray-700 font-bold mb-2">Post Title</label>
-            <input type="text" name="title" value="<?= old('title', $blog['title'] ?? '') ?>" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500" required>
-        </div>
+<form action="<?= isset($blog) ? base_url('admin/blog/update/' . $blog['id']) : base_url('admin/blog/create') ?>" method="POST" enctype="multipart/form-data">
+    <?= csrf_field() ?>
+    
+    <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Main Content (Left) -->
+        <div class="lg:w-2/3 space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                <div class="mb-8">
+                    <label class="block text-gray-400 font-bold text-xs uppercase tracking-widest mb-2">Judul Artikel</label>
+                    <input type="text" name="title" value="<?= old('title', $blog['title'] ?? '') ?>" 
+                           placeholder="Masukkan judul artikel yang menarik..."
+                           class="w-full text-3xl font-bold border-none outline-none focus:ring-0 p-0 placeholder-gray-200" required>
+                </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="col-span-1">
-                <label class="block text-gray-700 font-bold mb-2">Category</label>
-                <select name="category_id" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500" required>
-                    <option value="">Select Category</option>
-                    <?php foreach ($categories as $cat): ?>
-                        <option value="<?= $cat['id'] ?>" <?= (old('category_id', $blog['category_id'] ?? '') == $cat['id']) ? 'selected' : '' ?>><?= $cat['name'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-span-1">
-                <label class="block text-gray-700 font-bold mb-2">Status</label>
-                <select name="status" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500">
-                    <option value="published" <?= (old('status', $blog['status'] ?? '') == 'published') ? 'selected' : '' ?>>Published</option>
-                    <option value="draft" <?= (old('status', $blog['status'] ?? '') == 'draft') ? 'selected' : '' ?>>Draft</option>
-                </select>
+                <div>
+                    <label class="block text-gray-400 font-bold text-xs uppercase tracking-widest mb-2">Konten Lengkap</label>
+                    <textarea name="content" rows="20" 
+                              placeholder="Mulai menulis cerita Anda di sini..."
+                              class="w-full border-none outline-none focus:ring-0 p-0 text-gray-700 leading-relaxed placeholder-gray-200 resize-none min-h-[500px]" required><?= old('content', $blog['content'] ?? '') ?></textarea>
+                </div>
             </div>
         </div>
 
-        <div class="mb-6">
-            <label class="block text-gray-700 font-bold mb-2">Summary / Short Description</label>
-            <textarea name="summary" rows="3" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500" required><?= old('summary', $blog['summary'] ?? '') ?></textarea>
-        </div>
-
-        <div class="mb-6">
-            <label class="block text-gray-700 font-bold mb-2">Full Content</label>
-            <textarea name="content" rows="15" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500" required><?= old('content', $blog['content'] ?? '') ?></textarea>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="col-span-1">
-                <label class="block text-gray-700 font-bold mb-2">Feature Image</label>
-                <input type="file" name="image" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700">
+        <!-- Sidebar (Right) -->
+        <div class="lg:w-1/3 space-y-6">
+            <!-- Publish Box -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <h4 class="font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-paper-plane mr-2 text-primary-600"></i> Publikasi
+                </h4>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-500 mb-1">Status</label>
+                        <select name="status" class="w-full px-4 py-2 rounded-xl border border-gray-200 outline-none focus:border-primary-500 bg-white font-medium text-gray-700">
+                            <option value="published" <?= (old('status', $blog['status'] ?? '') == 'published') ? 'selected' : '' ?>>Terbit</option>
+                            <option value="draft" <?= (old('status', $blog['status'] ?? '') == 'draft') ? 'selected' : '' ?>>Draf</option>
+                        </select>
+                    </div>
+                    <div class="pt-4 border-t border-gray-50 flex items-center justify-between">
+                        <a href="<?= base_url('admin/blog') ?>" class="text-sm text-gray-500 hover:text-gray-700 underline">Batal</a>
+                        <button type="submit" class="bg-primary-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-primary-700 shadow-lg shadow-primary-100 transition-all">
+                            Simpan Artikel
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="col-span-1">
-                <label class="block text-gray-700 font-bold mb-2">Meta Title (SEO)</label>
-                <input type="text" name="meta_title" value="<?= old('meta_title', $blog['meta_title'] ?? '') ?>" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500">
+
+            <!-- Featured Image -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <h4 class="font-bold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-image mr-2 text-primary-600"></i> Gambar Utama
+                </h4>
+                <?php if (isset($blog) && $blog['image']): ?>
+                    <div class="mb-4 rounded-xl overflow-hidden aspect-video bg-gray-100">
+                        <img src="<?= base_url('uploads/blog/' . $blog['image']) ?>" class="w-full h-full object-cover">
+                    </div>
+                <?php endif; ?>
+                <input type="file" name="image" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100">
+                <p class="text-[10px] text-gray-400 mt-2">Format: JPG, PNG, WEBP. Maks: 3MB.</p>
             </div>
         </div>
-
-        <div class="mb-8">
-            <label class="block text-gray-700 font-bold mb-2">Meta Description (SEO)</label>
-            <textarea name="meta_desc" rows="2" class="w-full px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-primary-500"><?= old('meta_desc', $blog['meta_desc'] ?? '') ?></textarea>
-        </div>
-
-        <div class="flex justify-end space-x-4">
-            <a href="<?= base_url('admin/blog') ?>" class="px-6 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50">Cancel</a>
-            <button type="submit" class="px-10 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 font-bold">
-                Save Post
-            </button>
-        </div>
-    </form>
-</div>
+    </div>
+</form>
 
 <?= $this->endSection() ?>

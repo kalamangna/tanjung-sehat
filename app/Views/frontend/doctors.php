@@ -16,11 +16,12 @@
                     <img src="<?= get_image_url($doctor['image'], 'doctor') ?>" 
                          alt="<?= $doctor['name'] ?>" 
                          data-category="doctor"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                 </div>
                 <div class="p-6 text-center">
                     <h3 class="text-xl font-bold text-gray-900 mb-1"><?= $doctor['name'] ?></h3>
-                    <p class="text-primary-600 font-medium mb-4"><?= $doctor['specialty'] ?></p>
+                    <p class="text-primary-600 font-medium mb-6"><?= $doctor['specialty'] ?></p>
+                    
                     <a href="<?= base_url('doctors/' . $doctor['slug']) ?>" class="block w-full py-3 bg-gray-50 text-gray-900 font-bold rounded-xl hover:bg-primary-600 hover:text-white transition-colors">
                         Lihat Profil
                     </a>

@@ -7,10 +7,10 @@
     </url>
     <?php endforeach; ?>
 
-    <?php foreach ($services as $service): ?>
+    <?php foreach ($doctors as $doctor): ?>
     <url>
-        <loc><?= base_url('services/' . $service['slug']) ?></loc>
-        <lastmod><?= date('Y-m-d', strtotime($service['updated_at'] ?? $service['created_at'])) ?></lastmod>
+        <loc><?= base_url('doctors/' . $doctor['slug']) ?></loc>
+        <lastmod><?= date('Y-m-d', strtotime($doctor['updated_at'] ?? $doctor['created_at'])) ?></lastmod>
         <priority>0.7</priority>
     </url>
     <?php endforeach; ?>

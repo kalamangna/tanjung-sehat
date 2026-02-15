@@ -11,22 +11,24 @@ class Blog extends BaseController
     {
         $blogModel = new BlogModel();
         $this->data['title'] = 'Blog & Artikel Kesehatan';
-        $this->data['blogs'] = $blogModel->getWithCategory();
+        $this->data['blogs'] = $blogModel->getAll('published');
         return view('frontend/blog', $this->data);
     }
 
     public function detail($slug)
     {
         $blogModel = new BlogModel();
-        $blog = $blogModel->select('blogs.*, blog_categories.name as category_name')
-                          ->join('blog_categories', 'blog_categories.id = blogs.category_id')
-                          ->where('blogs.slug', $slug)
-                          ->first();
+        $blog = $blogModel->where('slug', $slug)->first();
         
         if (!$blog) throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 
         $this->data['title'] = $blog['title'];
-        $this->data['meta_desc'] = $blog['meta_desc'];
+        
+        // Use blog content for meta description
+        $this->data['meta_desc'] = mb_substr(strip_tags($blog['content']), 0, 160);
+        $this->data['og_image'] = $blog['image'] ? base_url('uploads/blog/' . $blog['image']) : base_url('images/og-image.jpg');
+        $this->data['og_type'] = 'article';
+        
         $this->data['blog'] = $blog;
         return view('frontend/blog_detail', $this->data);
     }

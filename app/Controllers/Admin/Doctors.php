@@ -10,14 +10,14 @@ class Doctors extends BaseController
     public function index()
     {
         $doctorModel = new DoctorModel();
-        $this->data['title'] = 'Manage Doctors';
+        $this->data['title'] = 'Kelola Dokter';
         $this->data['doctors'] = $doctorModel->findAll();
         return view('admin/doctors/index', $this->data);
     }
 
     public function new()
     {
-        $this->data['title'] = 'Add New Doctor';
+        $this->data['title'] = 'Tambah Dokter Baru';
         return view('admin/doctors/form', $this->data);
     }
 
@@ -36,6 +36,21 @@ class Doctors extends BaseController
         }
 
         $data = $this->request->getPost();
+        
+        // Process schedule array
+        $finalSchedule = [];
+        if (isset($data['schedule']) && is_array($data['schedule'])) {
+            foreach ($data['schedule'] as $day => $times) {
+                if (isset($times['active'])) {
+                    $finalSchedule[$day] = [
+                        'start' => $times['start'],
+                        'end' => $times['end']
+                    ];
+                }
+            }
+        }
+        $data['service_days'] = json_encode($finalSchedule);
+
         $data['slug'] = url_title($data['name'], '-', true);
         $data['is_active'] = isset($data['is_active']) ? 1 : 0;
 
@@ -48,7 +63,7 @@ class Doctors extends BaseController
 
         $doctorModel->insert($data);
 
-        return redirect()->to('admin/doctors')->with('success', 'Doctor added successfully');
+        return redirect()->to('admin/doctors')->with('success', 'Dokter berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -58,7 +73,7 @@ class Doctors extends BaseController
         
         if (!$doctor) throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 
-        $this->data['title'] = 'Edit Doctor: ' . $doctor['name'];
+        $this->data['title'] = 'Edit Dokter: ' . $doctor['name'];
         $this->data['doctor'] = $doctor;
         return view('admin/doctors/form', $this->data);
     }
@@ -79,6 +94,21 @@ class Doctors extends BaseController
         }
 
         $data = $this->request->getPost();
+        
+        // Process schedule array
+        $finalSchedule = [];
+        if (isset($data['schedule']) && is_array($data['schedule'])) {
+            foreach ($data['schedule'] as $day => $times) {
+                if (isset($times['active'])) {
+                    $finalSchedule[$day] = [
+                        'start' => $times['start'],
+                        'end' => $times['end']
+                    ];
+                }
+            }
+        }
+        $data['service_days'] = json_encode($finalSchedule);
+
         $data['slug'] = url_title($data['name'], '-', true);
         $data['is_active'] = isset($data['is_active']) ? 1 : 0;
 
@@ -95,7 +125,7 @@ class Doctors extends BaseController
 
         $doctorModel->update($id, $data);
 
-        return redirect()->to('admin/doctors')->with('success', 'Doctor updated successfully');
+        return redirect()->to('admin/doctors')->with('success', 'Dokter berhasil diperbarui');
     }
 
     public function delete($id)
@@ -106,6 +136,6 @@ class Doctors extends BaseController
             unlink(ROOTPATH . 'public/uploads/doctors/' . $doctor['image']);
         }
         $doctorModel->delete($id);
-        return redirect()->to('admin/doctors')->with('success', 'Doctor deleted successfully');
+        return redirect()->to('admin/doctors')->with('success', 'Dokter berhasil dihapus');
     }
 }

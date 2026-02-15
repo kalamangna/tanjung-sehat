@@ -15,7 +15,6 @@ $routes->get('privacy-policy', 'Pages::privacy');
 $routes->get('disclaimer', 'Pages::disclaimer');
 
 $routes->get('services', 'Services::index');
-$routes->get('services/(:any)', 'Services::detail/$1');
 
 $routes->get('doctors', 'Doctors::index');
 $routes->get('doctors/(:any)', 'Doctors::detail/$1');
@@ -71,6 +70,10 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     // Testimonials
     $routes->group('testimonials', ['filter' => 'role:manage_testimonials'], function($routes) {
         $routes->get('/', 'Admin\Testimonials::index');
+        $routes->get('new', 'Admin\Testimonials::new');
+        $routes->post('create', 'Admin\Testimonials::create');
+        $routes->get('edit/(:num)', 'Admin\Testimonials::edit/$1');
+        $routes->post('update/(:num)', 'Admin\Testimonials::update/$1');
         $routes->get('toggle/(:num)', 'Admin\Testimonials::toggle/$1');
         $routes->get('delete/(:num)', 'Admin\Testimonials::delete/$1');
     });

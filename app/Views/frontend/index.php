@@ -24,7 +24,7 @@
         <div class="md:w-1/2 relative">
             <div class="absolute -top-20 -right-20 w-96 h-96 bg-secondary-100 rounded-full blur-3xl opacity-50"></div>
             <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-primary-100 rounded-full blur-3xl opacity-50"></div>
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000" alt="Klinik Tanjung Sehat" class="rounded-3xl shadow-2xl relative z-10 w-full object-cover h-[500px]">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000" alt="Klinik Tanjung Sehat" class="rounded-3xl shadow-2xl relative z-10 w-full object-cover h-[500px]" loading="eager">
         </div>
     </div>
 </section>
@@ -63,22 +63,11 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <?php foreach ($services as $service): ?>
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
-                <div class="aspect-video overflow-hidden relative">
-                    <img src="<?= get_image_url($service['image'], 'service') ?>" 
-                         alt="<?= $service['title'] ?>" 
-                         data-category="service"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-8">
-                    <h4 class="text-xl font-bold mb-4"><?= $service['title'] ?></h4>
-                    <p class="text-gray-600 mb-6 line-clamp-2">
-                        <?= $service['description'] ?>
-                    </p>
-                    <a href="<?= base_url('services/' . $service['slug']) ?>" class="text-primary-600 font-semibold flex items-center group-hover:underline">
-                        Info Lengkap <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-gray-100 group text-center">
+                <h4 class="text-xl font-bold mb-4"><?= $service['title'] ?></h4>
+                <p class="text-gray-600">
+                    <?= $service['description'] ?? 'Layanan kesehatan profesional untuk Anda.' ?>
+                </p>
             </div>
             <?php endforeach; ?>
         </div>
@@ -95,7 +84,7 @@
 <section class="py-24 bg-white overflow-hidden">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
         <div class="md:w-1/2 relative">
-            <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=1000" alt="Tim Medis" class="rounded-3xl shadow-xl w-full">
+            <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=1000" alt="Tim Medis" class="rounded-3xl shadow-xl w-full" loading="lazy">
             <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hidden md:block">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
@@ -112,7 +101,7 @@
             <h2 class="text-primary-600 font-bold tracking-wider uppercase text-sm mb-3">Tentang Kami</h2>
             <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Klinik Pilihan Keluarga Makassar</h3>
             <p class="text-gray-600 mb-6 leading-relaxed">
-                Klinik & Apotik Tanjung Sehat hadir memberikan layanan kesehatan yang ramah, cepat, dan terjangkau. Kami siap membantu Anda dan keluarga tetap sehat dengan fasilitas yang lengkap dan nyaman.
+                Klinik & Apotek Tanjung Sehat hadir memberikan layanan kesehatan yang ramah, cepat, dan terjangkau. Kami siap membantu Anda dan keluarga tetap sehat dengan fasilitas yang lengkap dan nyaman.
             </p>
             <ul class="space-y-4 mb-8">
                 <li class="flex items-center space-x-3">
@@ -121,7 +110,7 @@
                 </li>
                 <li class="flex items-center space-x-3">
                     <i class="fas fa-check-circle text-primary-500"></i>
-                    <span class="font-medium">Apotik Lengkap</span>
+                    <span class="font-medium">Apotek Lengkap</span>
                 </li>
                 <li class="flex items-center space-x-3">
                     <i class="fas fa-check-circle text-primary-500"></i>
@@ -130,6 +119,74 @@
             </ul>
             <a href="<?= base_url('about') ?>" class="bg-gray-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors">
                 Selengkapnya
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Doctors Section -->
+<section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <h2 class="text-primary-600 font-bold tracking-wider uppercase text-sm mb-3">Dokter Kami</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Jadwal Praktik Dokter</h3>
+            </div>
+            <a href="<?= base_url('doctors') ?>" class="hidden md:block text-primary-600 font-semibold">
+                Lihat Semua Dokter <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <?php foreach ($doctors as $doctor): ?>
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                <div class="aspect-[3/4] overflow-hidden relative">
+                    <img src="<?= get_image_url($doctor['image'], 'doctor') ?>" 
+                         alt="<?= $doctor['name'] ?>" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-1"><?= $doctor['name'] ?></h3>
+                    <p class="text-primary-600 font-medium mb-4"><?= $doctor['specialty'] ?></p>
+                    
+                    <div class="mb-6 py-3 border-y border-gray-100 flex flex-col gap-1 text-xs text-gray-500">
+                        <?php 
+                        $schedule = [];
+                        if (isset($doctor['service_days']) && !empty($doctor['service_days'])) {
+                            $schedule = json_decode($doctor['service_days'], true) ?: [];
+                        }
+                        ?>
+                        <div class="flex items-center justify-center gap-2">
+                            <i class="fas fa-calendar-day text-[10px] text-primary-400"></i>
+                            <span class="line-clamp-1">
+                                <?= !empty($schedule) ? implode(', ', array_keys($schedule)) : 'Hubungi kami' ?>
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2">
+                            <i class="fas fa-clock text-[10px] text-primary-400"></i>
+                            <span>
+                                <?php if (!empty($schedule)): 
+                                    $firstDay = reset($schedule);
+                                ?>
+                                    <?= str_replace(':', '.', substr($firstDay['start'], 0, 5)) ?> – <?= str_replace(':', '.', substr($firstDay['end'], 0, 5)) ?> WITA
+                                <?php else: ?>
+                                    -
+                                <?php endif; ?>
+                            </span>
+                        </div>
+                    </div>
+
+                    <a href="<?= base_url('doctors/' . $doctor['slug']) ?>" class="block w-full py-2 bg-gray-50 text-gray-900 font-bold rounded-xl hover:bg-primary-600 hover:text-white transition-colors text-sm">
+                        Detail Jadwal
+                    </a>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        
+        <div class="text-center mt-12 md:hidden">
+            <a href="<?= base_url('doctors') ?>" class="inline-flex items-center text-primary-600 font-semibold">
+                Lihat Semua Dokter <i class="fas fa-chevron-right ml-2 text-xs"></i>
             </a>
         </div>
     </div>
@@ -158,7 +215,6 @@
                     </div>
                     <div>
                         <div class="font-bold"><?= $testi['name'] ?></div>
-                        <div class="text-sm text-gray-500"><?= $testi['position'] ?></div>
                     </div>
                 </div>
             </div>
@@ -187,19 +243,14 @@
                     <img src="<?= get_image_url($blog['image'], 'blog') ?>" 
                          alt="<?= $blog['title'] ?>" 
                          data-category="blog"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-primary-600 text-white px-3 py-1 rounded-md text-xs font-bold uppercase">
-                            <?= $blog['category_name'] ?>
-                        </span>
-                    </div>
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                 </div>
                 <div class="text-sm text-gray-500 mb-3"><?= date('d M Y', strtotime($blog['created_at'])) ?></div>
                 <h4 class="text-xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
                     <a href="<?= base_url('blog/' . $blog['slug']) ?>"><?= $blog['title'] ?></a>
                 </h4>
-                <p class="text-gray-600 line-clamp-2">
-                    <?= $blog['summary'] ?>
+                <p class="text-gray-600 line-clamp-2 text-sm mb-4">
+                    <?= mb_substr(strip_tags($blog['content']), 0, 120) ?>...
                 </p>
             </div>
             <?php endforeach; ?>
@@ -214,7 +265,8 @@
             <h3 class="text-3xl font-bold mb-2">Butuh Bantuan?</h3>
             <p class="text-primary-100">Chat kami via WhatsApp untuk respon cepat.</p>
         </div>
-        <a href="https://wa.me/<?= $settings['whatsapp_number'] ?? '' ?>" class="bg-white text-primary-600 px-10 py-4 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-all flex items-center">
+        <?php $wa_link = (isset($settings['whatsapp_number']) && strpos($settings['whatsapp_number'], '0') === 0) ? '62' . substr($settings['whatsapp_number'], 1) : ($settings['whatsapp_number'] ?? ''); ?>
+        <a href="https://wa.me/<?= $wa_link ?>" class="bg-white text-primary-600 px-10 py-4 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-all flex items-center">
             <i class="fab fa-whatsapp mr-3 text-2xl"></i> Chat WhatsApp
         </a>
     </div>

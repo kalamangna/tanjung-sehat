@@ -6,7 +6,7 @@
     <div class="container mx-auto px-4 max-w-4xl">
         <h1 class="text-3xl font-bold mb-8 text-gray-900">Disclaimer</h1>
         <div class="prose prose-primary max-w-none text-gray-700">
-            <p>Info di website Klinik & Apotik Tanjung Sehat bersifat umum. Ini bukan pengganti saran medis, diagnosis, atau perawatan profesional.</p>
+            <p>Info di website Klinik & Apotek Tanjung Sehat bersifat umum. Ini bukan pengganti saran medis, diagnosis, atau perawatan profesional.</p>
             
             <h3 class="text-xl font-bold mt-8 mb-4">Saran Medis</h3>
             <p>Selalu konsultasikan kondisi kesehatan Anda ke dokter. Jangan menunda pengobatan hanya karena info yang Anda baca di website ini.</p>

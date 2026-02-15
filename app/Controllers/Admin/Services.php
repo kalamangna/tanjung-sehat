@@ -28,7 +28,6 @@ class Services extends BaseController
         $rules = [
             'title'       => 'required|min_length[3]',
             'description' => 'required',
-            'content'     => 'required',
         ];
 
         if (!$this->validate($rules)) {
@@ -64,7 +63,6 @@ class Services extends BaseController
         $rules = [
             'title'       => 'required|min_length[3]',
             'description' => 'required',
-            'content'     => 'required',
         ];
 
         if (!$this->validate($rules)) {

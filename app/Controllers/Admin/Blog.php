@@ -4,23 +4,20 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\BlogModel;
-use App\Models\BlogCategoryModel;
 
 class Blog extends BaseController
 {
     public function index()
     {
         $blogModel = new BlogModel();
-        $this->data['title'] = 'Manage Blog Posts';
-        $this->data['blogs'] = $blogModel->getWithCategory();
+        $this->data['title'] = 'Kelola Artikel Blog';
+        $this->data['blogs'] = $blogModel->getAll();
         return view('admin/blog/index', $this->data);
     }
 
     public function new()
     {
-        $catModel = new BlogCategoryModel();
-        $this->data['title'] = 'Create New Post';
-        $this->data['categories'] = $catModel->findAll();
+        $this->data['title'] = 'Tambah Artikel Baru';
         return view('admin/blog/form', $this->data);
     }
 
@@ -28,11 +25,9 @@ class Blog extends BaseController
     {
         $blogModel = new BlogModel();
         $rules = [
-            'title'       => 'required|min_length[5]',
-            'category_id' => 'required',
-            'summary'     => 'required',
-            'content'     => 'required',
-            'image'       => 'is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png,image/webp]|max_size[image,3072]',
+            'title'   => 'required|min_length[5]',
+            'content' => 'required',
+            'image'   => 'is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png,image/webp]|max_size[image,3072]',
         ];
 
         if (!$this->validate($rules)) {
@@ -50,20 +45,18 @@ class Blog extends BaseController
         }
 
         $blogModel->insert($data);
-        return redirect()->to('admin/blog')->with('success', 'Post published successfully');
+        return redirect()->to('admin/blog')->with('success', 'Artikel berhasil diterbitkan');
     }
 
     public function edit($id)
     {
         $blogModel = new BlogModel();
-        $catModel = new BlogCategoryModel();
         $blog = $blogModel->find($id);
         
         if (!$blog) throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 
-        $this->data['title'] = 'Edit Post';
+        $this->data['title'] = 'Edit Artikel';
         $this->data['blog'] = $blog;
-        $this->data['categories'] = $catModel->findAll();
         return view('admin/blog/form', $this->data);
     }
 
@@ -73,11 +66,9 @@ class Blog extends BaseController
         $blog = $blogModel->find($id);
 
         $rules = [
-            'title'       => 'required|min_length[5]',
-            'category_id' => 'required',
-            'summary'     => 'required',
-            'content'     => 'required',
-            'image'       => 'is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png,image/webp]|max_size[image,3072]',
+            'title'   => 'required|min_length[5]',
+            'content' => 'required',
+            'image'   => 'is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png,image/webp]|max_size[image,3072]',
         ];
 
         if (!$this->validate($rules)) {
@@ -98,7 +89,7 @@ class Blog extends BaseController
         }
 
         $blogModel->update($id, $data);
-        return redirect()->to('admin/blog')->with('success', 'Post updated successfully');
+        return redirect()->to('admin/blog')->with('success', 'Artikel berhasil diperbarui');
     }
 
     public function delete($id)
@@ -109,6 +100,6 @@ class Blog extends BaseController
             unlink(ROOTPATH . 'public/uploads/blog/' . $blog['image']);
         }
         $blogModel->delete($id);
-        return redirect()->to('admin/blog')->with('success', 'Post deleted successfully');
+        return redirect()->to('admin/blog')->with('success', 'Artikel berhasil dihapus');
     }
 }

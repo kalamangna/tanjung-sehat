@@ -6,7 +6,7 @@
     <div class="container mx-auto px-4 max-w-4xl">
         <h1 class="text-3xl font-bold mb-8 text-gray-900">Kebijakan Privasi</h1>
         <div class="prose prose-primary max-w-none text-gray-700">
-            <p>Kami sangat menjaga privasi Anda. Halaman ini menjelaskan bagaimana kami mengelola data pribadi yang Anda berikan kepada Klinik & Apotik Tanjung Sehat.</p>
+            <p>Kami sangat menjaga privasi Anda. Halaman ini menjelaskan bagaimana kami mengelola data pribadi yang Anda berikan kepada Klinik & Apotek Tanjung Sehat.</p>
             
             <h3 class="text-xl font-bold mt-8 mb-4">Data yang Kami Kumpulkan</h3>
             <p>Kami mengumpulkan info saat Anda mendaftar janji temu, mengisi formulir kontak, atau membeli obat. Data ini meliputi nama, nomor telepon, email, dan riwayat kesehatan singkat.</p>

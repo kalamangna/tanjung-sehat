@@ -49,7 +49,11 @@
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-bold text-gray-700 mb-2">Kategori</label>
-                <input type="text" name="category" class="w-full px-4 py-2 rounded-xl border border-gray-200 outline-none focus:border-primary-500" placeholder="Contoh: Fasilitas, Kegiatan" required>
+                <select name="category" class="w-full px-4 py-2 rounded-xl border border-gray-200 outline-none focus:border-primary-500 bg-white" required>
+                    <option value="" disabled selected>Pilih Kategori</option>
+                    <option value="Fasilitas">Fasilitas</option>
+                    <option value="Kegiatan">Kegiatan</option>
+                </select>
             </div>
             <div class="mb-6">
                 <label class="block text-sm font-bold text-gray-700 mb-2">Pilih File</label>

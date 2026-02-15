@@ -1,13 +1,13 @@
 <footer class="bg-gray-900 text-white pt-16 pb-8">
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-1">
-            <h3 class="text-2xl font-bold mb-6 text-primary-400">TanjungSehat</h3>
+            <h3 class="text-2xl font-bold mb-6 text-primary-400 leading-tight">Klinik & Apotek<br>Tanjung Sehat</h3>
             <p class="text-gray-400 mb-6 italic">
                 <?= $settings['site_tagline'] ?? 'Sehat Lebih Dekat, Lebih Cepat.' ?>
             </p>
             <div class="flex space-x-4">
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors"><i class="fab fa-fw fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors"><i class="fab fa-fw fa-instagram"></i></a>
             </div>
         </div>
         
@@ -17,7 +17,7 @@
                 <li><a href="<?= base_url('about') ?>" class="hover:text-primary-400 transition-colors">Tentang Kami</a></li>
                 <li><a href="<?= base_url('services') ?>" class="hover:text-primary-400 transition-colors">Layanan</a></li>
                 <li><a href="<?= base_url('doctors') ?>" class="hover:text-primary-400 transition-colors">Dokter</a></li>
-                <li><a href="<?= base_url('pharmacy') ?>" class="hover:text-primary-400 transition-colors">Apotik</a></li>
+                <li><a href="<?= base_url('pharmacy') ?>" class="hover:text-primary-400 transition-colors">Apotek</a></li>
             </ul>
         </div>
         
@@ -35,15 +35,21 @@
             <h4 class="text-lg font-semibold mb-6 border-b border-gray-800 pb-2">Kontak</h4>
             <ul class="space-y-4 text-gray-400 text-sm">
                 <li class="flex items-start space-x-3">
-                    <i class="fas fa-map-marker-alt mt-1 text-primary-400"></i>
+                    <span class="w-6 flex-shrink-0 flex justify-center mt-1">
+                        <i class="fas fa-map-marker-alt text-primary-400"></i>
+                    </span>
                     <span><?= $settings['contact_address'] ?? 'Makassar, Indonesia' ?></span>
                 </li>
                 <li class="flex items-center space-x-3">
-                    <i class="fas fa-phone text-primary-400"></i>
-                    <span><?= $settings['contact_phone'] ?? '' ?></span>
+                    <span class="w-6 flex-shrink-0 flex justify-center">
+                        <i class="fab fa-whatsapp text-primary-400"></i>
+                    </span>
+                    <span><?= $settings['whatsapp_number'] ?? '' ?></span>
                 </li>
                 <li class="flex items-center space-x-3">
-                    <i class="fas fa-envelope text-primary-400"></i>
+                    <span class="w-6 flex-shrink-0 flex justify-center">
+                        <i class="fas fa-envelope text-primary-400"></i>
+                    </span>
                     <span><?= $settings['contact_email'] ?? '' ?></span>
                 </li>
             </ul>
